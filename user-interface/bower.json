@@ -1,0 +1,14 @@
+{
+  "name": "resource-manager-ui",
+  "description": "Pantokrator Resource Manager",
+  "main": "main.js",
+  "authors": [
+    "Danilo Ambrosio"
+  ],
+  "license": "GNU",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

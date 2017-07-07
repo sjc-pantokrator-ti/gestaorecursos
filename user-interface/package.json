@@ -1,0 +1,26 @@
+{
+  "name": "resource-manager-ui",
+  "version": "1.0.0",
+  "description": "Pantokrator Resource Manager",
+  "dependencies": {
+    "bower": "1.6.5",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-util": "^3.0.8",
+    "gulp-webserver": "^0.9.1"
+  },
+  "devDependencies": {
+
+  },
+  "scripts": {
+    "start": "node app",
+    "postinstall": "gulp deploy"
+  },
+  "author": "Danilo Ambrosio",
+  "license": "GNU",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danilo-ambrosio/resource-manager-ui"
+  },
+  "homepage": "https://github.com/danilo-ambrosio/resource-manager-ui/blob/master/README.md"
+}
