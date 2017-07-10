@@ -5,12 +5,18 @@ var webserver = require('gulp-webserver');
 
  // Concatenate JS Files
 gulp.task('scripts', function() {
-	var src = ['bower_components/jquery/dist/jquery.min.js' ,'bower_components/bootstrap/dist/js/bootstrap.min.js'];
+	var src = ['bower_components/jquery/dist/jquery.min.js' ,
+						 'bower_components/bootstrap/dist/js/bootstrap.min.js',
+					   'bower_components/toastr/toastr.min.js',
+					 		'bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'];
     return gulp.src(src).pipe(gulp.dest('public/assets/js'));
 });
 
 gulp.task('css', function() {
-	var src = ['bower_components/bootstrap/dist/css/bootstrap.min.css', 'bower_components/bootstrap/dist/css/bootstrap-theme.min.css'];
+	var src = ['bower_components/bootstrap/dist/css/bootstrap.min.css',
+						 'bower_components/bootstrap/dist/css/bootstrap-theme.min.css',
+					   'bower_components/toastr/toastr.min.css',
+					   'bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css'];
     return gulp.src(src).pipe(gulp.dest('public/assets/css'));
 });
 

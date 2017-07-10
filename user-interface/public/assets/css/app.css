@@ -33,3 +33,20 @@
   z-index: 1030;
   display: none;
 }
+
+.calendar-box {
+  margin-left: 14%;
+}
+
+.schedule-button {
+  margin-left: 42%;
+  padding: 35px 0 20px;
+}
+
+#date {
+  width: 36%
+}
+
+#start-hour, #end-hour {
+  width: 23%
+}
