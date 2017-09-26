@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PTK Gestão de Recursos</title>
+
+    <link rel="icon" type="img/ico" href="{% static 'assets/img/favicon.ico' %}">
+    <link href="{% static 'assets/css/app.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/toastr.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/bootstrap-theme.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/bootstrap-datepicker.min.css' %}" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img alt="Brand" src="{% static 'assets/img/logo-mini.jpg' %}" class="logo-ptk">
+            Gestão de Recursos
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="form-inline centered">
+        <div class="form-group">
+          <label for="resource-calendar" class="control-label">Recurso:</label>
+          <select class="form-control" id="resource-calendar">
+            <option value="" selected disabled>Selecione um recurso...</option>
+            {% for recurso in recursos %}
+            <option value="{{recurso.nome_google}}">{{recurso.nome}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#resource-schedule-modal">Agendar recurso</button>
+      </div>
+
+      <hr/>
+
+      <div class="calendar-box">
+        <iframe id="calendar-frame" frameborder="0" scrolling="no"></iframe>
+      </div>
+
+    </div>
+
+    <div class="modal fade" id="resource-schedule-modal" tabindex="-1" role="dialog" aria-labelledby="resource-schedule-modal-label">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="resource-schedule-modal">Agendamento de Recurso</h4>
+          </div>
+          <form id="schedule-form" method="post">
+            {% csrf_token %}
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="resource" class="control-label">Sala/Recurso:</label>
+                <select class="form-control" id="resource" name="recurso-selecionado">
+                  <option value="" selected disabled>Selecione um recurso...</option>
+                  {% for recurso in recursos %}
+                  <option value="{{recurso.nome_google}}">{{recurso.nome}}</option>
+                  {% endfor %}
+                </select>
+                <div class="form-group">
+                  <label for="date" class="control-label">Data:</label>
+                  {{form.data_agendamento}}
+                </div>
+                <div class="form-group">
+                  <label for="start-hour" class="control-label">Horario Inicio:</label>
+                  {{form.horario_inicio}}
+                </div>
+                <div class="form-group">
+                  <label for="end-hour" class="control-label">Horario Fim:</label>
+                  {{form.horario_fim}}
+                </div>
+                <div class="form-group">
+                  <label for="motivo" class="control-label">Motivo:</label>
+                  {{form.motivo}}
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" id="schedule-btn" class="btn btn-primary">Agendar</button>
+              <button type="button" id="cancel-schedule-btn" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/toastr.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'assets/js/app/resource-schedule.js' %}"></script>
+    {% if is_valid %}
+      <script>toastr.info('Recurso agendado com sucesso!','');</script>
+    {% endif%}
+    {% if is_error %}
+      <script>toastr.error('Erro ao agendar recurso.','');</script>
+    {% endif%}
+</body>
