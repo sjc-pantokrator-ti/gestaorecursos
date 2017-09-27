@@ -55,7 +55,7 @@ def v_agendamento (request):
 			datai_combinada = datetime.combine(form.cleaned_data['data_agendamento'],form.cleaned_data['horario_inicio'])
 			dataf_combinada = datetime.combine(form.cleaned_data['data_agendamento'],form.cleaned_data['horario_fim'])
 			event = {
-			      'summary': 'Rodrigo Teste',
+			      'summary': 'Jonathan Teste',
 			      'description': form.cleaned_data['motivo'] ,
 			      'start': {
 			        'dateTime': datai_combinada,
